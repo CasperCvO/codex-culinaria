@@ -28,7 +28,9 @@ order whose ingredient tables are generated from it, so they cannot disagree. Al
 - target, computed and measured metrics are kept apart;
 - an iteration log tracks changes over time.
 
-Ingredient and equipment schemas: one file per item; composition data with sources;
+Ingredient and equipment schemas: one file per ingredient family (with functional
+ingredients and brand/cultivar variants in a heading hierarchy, see
+`docs/specs/ingredient-format.md`) and one file per device; composition data with sources;
 aliases.
 
 Deliverables:

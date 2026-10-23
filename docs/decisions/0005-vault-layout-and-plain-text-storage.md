@@ -16,7 +16,8 @@ classification belongs in frontmatter.
   `02_library/components/` and `02_library/dishes/` (locked), `03_reference/ingredients/`,
   `04_knowledge/` (technique, science, food-safety notes). See `vault/README.md`.
 - `02_library` rather than `02_vault`: no "vault inside the vault".
-- One Markdown file with YAML frontmatter per recipe, ingredient and device.
+- One Markdown file with YAML frontmatter per recipe and device; one file per ingredient
+  family in `03_reference/ingredients/` (amended by [0006](0006-ingredient-family-files-and-hierarchy.md)).
 - No database as source of truth. A SQLite index may be added later as a disposable,
   gitignored cache rebuilt from the files.
 - Files must read correctly in Obsidian and VS Code; no editor-specific syntax in data.

@@ -149,8 +149,9 @@ Measured values belong to a bench trial and go in the iteration log.
 
 - File name = ID: lowercase ASCII with hyphens (`witte-perziksorbet.md`), unique across the
   vault.
-- Ingredient names in tables are plain text that must match the name or an alias of an
-  ingredient file in `03_reference/ingredients/`, or the title or an alias of a component recipe.
+- Ingredient names in tables are plain text that must match a functional ingredient (`##`), a
+  variant (`###`), or an alias in an ingredient family file in `03_reference/ingredients/` (see
+  [`ingredient-format.md`](ingredient-format.md)), or the title or an alias of a component recipe.
   `culinaria check` reports unknown names with suggestions; `culinaria fmt` rewrites aliases to
   the canonical name. No link syntax is needed, so names work in every editor and survive moving
   files.
