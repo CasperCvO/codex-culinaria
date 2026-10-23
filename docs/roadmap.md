@@ -3,21 +3,21 @@
 Each phase lists its goal and exit criteria. Phases are sequential; scope changes are
 recorded in an ADR (see `docs/decisions/`).
 
-## Phase 0 - Foundation (current)
+## Phase 0 - Foundation (done)
 
 Goal: repository, tooling, CI, docs and vault skeleton; `culinaria check` validates the
 vault layout.
 
 Exit: format, lint, type-check, tests and `culinaria check` green locally and in CI.
 
-## Phase 1 - Data model & formats
+## Phase 1 - Data model & formats (current)
 
 Goal: the recipe, ingredient and equipment file formats, plus a parser/serializer and
 validators.
 
-Recipe file format - starting direction: a full ingredient table up front, then per-phase
-sections holding that phase's ingredients and steps in chronological order. Only one of
-the two is hand-written; the other is generated so they cannot disagree. Also:
+Recipe file format - draft in `docs/specs/recipe-format.md`: a full formula table up front
+(hand-written, the source of every weight), then per-phase sections in chronological
+order whose ingredient tables are generated from it, so they cannot disagree. Also:
 
 - the 100% basis can be one line, a group of lines (e.g. flour + oats), total flour, or
   total batch;

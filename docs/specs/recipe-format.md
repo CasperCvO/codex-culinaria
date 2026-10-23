@@ -1,0 +1,184 @@
+# Recipe file format (draft v1)
+
+Status: **draft for review** - not implemented yet. Worked examples in
+[`examples/`](examples/), starting with [`witte-perziksorbet.md`](examples/witte-perziksorbet.md).
+
+## Goals
+
+- Reads well in Obsidian, VS Code and on GitHub without plugins.
+- Every number has exactly one hand-written source. Everything derived (percentages, totals,
+  phase tables, later PAC/POD) is generated, so it can never disagree.
+- Plan top-down: the whole formula first, then the work per phase.
+- Keeps the Modernist Cuisine idea - ingredients grouped with the steps that use them, plus a
+  scaling column - in a form Markdown can express. MC aligns ingredient groups and steps side by
+  side in one table; Markdown tables cannot, so each group gets its own phase section.
+- Scaling changes weights only. Steps contain no weights, so they stay correct at any size.
+- Weight only, no volume column: volumes do not scale reliably (MC warns about the same).
+
+## Anatomy
+
+One recipe per Markdown file, in this order:
+
+| Part | Written by | Contents |
+| --- | --- | --- |
+| Frontmatter | hand | metadata, see [Frontmatter](#frontmatter) |
+| `# Title` | hand | the recipe name; the only H1 |
+| Intro | hand | optional: purpose, concept, constraints |
+| `## Formule` | hand + generated | the full formula: the source of every weight |
+| `## Bereiding` | hand + generated | one `###` section per phase, in chronological order |
+| `## Notities` | hand | optional: science, sourcing, open questions |
+| `## Iteratielog` | hand | one `###` entry per version, newest first |
+
+Further `##` sections may follow `## Bereiding`; they are free text and not part of the formula.
+Section and column names are Dutch because the vault content is Dutch; the parser also accepts
+the English equivalents (Formula, Method, Notes, Iteration log).
+
+## Formula
+
+The formula table under `## Formule` is where you plan and edit the recipe. Columns are
+identified by their header (Dutch or English):
+
+| Column | Written by | Contents |
+| --- | --- | --- |
+| **Ingrediënt** (Ingredient) | hand | an ingredient or component name, see [Names](#names-files-and-ids) |
+| **Gewicht (g)** (Weight (g)) | hand | grams, or `q.s.` for unweighed lines (salt to taste, oil for the pan) |
+| **Schaling (%)** (Scaling (%)) | generated | weight relative to the basis |
+| **Batch (%)** | generated | weight relative to the total weighed input |
+| **Opmerking** (Note) | hand | optional: preparation, temperature, quality, brand |
+
+Rows:
+
+- **Group row** - a bold name with all other cells empty, e.g. `| **Siroop** | | | | |`. It
+  starts a phase group; every ingredient row below it belongs to that phase until the next group
+  row. Groups are optional: a recipe without phases has none. Once a recipe has groups, every
+  ingredient row must be in one.
+- **Ingredient row** - the same ingredient may appear in several groups (split use), each line
+  with its own weight. A component (sub-recipe) counts as one line; its weight is the mass of
+  finished component used.
+- **Intermediate row** - a name starting with `→`: a mass produced within the recipe rather than
+  weighed in. Either a checkpoint (`→ na inkoken`, the expected mass after reducing) or a reserved
+  intermediate used later (`→ afgeschept vet uit de purge`). It scales with the recipe and gets
+  percentages, but is not in the total.
+- **`q.s.` rows** - no percentages, not in the total.
+- **Total row** - `**Totaal (inzet)**`, generated.
+
+You edit names, weights, notes and group rows; you may leave the percentage cells empty.
+`culinaria fmt` (Phase 1) then fills in:
+
+- **Schaling (%)** relative to the basis declared in frontmatter `basis`:
+  - a list of ingredient names - their summed weight is 100%. One anchor (milk, rice, pork
+    shoulder) or a group (flour + oats). A name matches all its lines, including split uses.
+  - `flour` - every line whose ingredient is a flour: true baker's percentage (needs ingredient
+    categories from `03_reference/ingredients/`).
+  - `total` - the whole batch. The Schaling column is then omitted because it would equal Batch.
+- **Batch (%)** relative to the total weighed input.
+- **Totaal (inzet)** - the sum of the weighed input. It is input, not yield: losses from cooking
+  or trimming are captured with checkpoints and in the iteration log.
+- Bold on the basis lines, and a caption under the table naming the basis and the total.
+
+`culinaria check` reports percentages that are out of date, so a hand edit is never silently
+inconsistent. Later phases add computed metrics (total solids, fat, MSNF, PAC/POD, hydration)
+next to their targets.
+
+## Phases and steps
+
+A phase is a stage of work in time (e.g. *Siroop*, *Rijpen*, *Draaien*): a `###` heading under
+`## Bereiding`, then its steps.
+
+- **Phases with ingredients** have the same name as a group in the formula. Their ingredient
+  table is generated by `fmt` from that group (name, weight, note; intermediate rows included)
+  between `<!-- culinaria:phase (generated - edits here are overwritten) -->` and
+  `<!-- /culinaria:phase -->`; edits inside the markers are overwritten. If you add a group to
+  the formula, `fmt` adds its phase section with the table, after the section of the previous
+  group, ready for you to write the steps.
+- **Phases without ingredients** (resting, churning, baking) are a heading with steps only, and
+  can sit anywhere between the others.
+- Grouped phases appear in the same order as their groups in the formula; `check` reports a
+  mismatch. An ingredient belongs to the phase where it is first handled (weighed, washed,
+  roasted), even when it is combined later: rice washed in *Rijst* is cooked in *Garen*.
+
+Steps form an ordered list numbered continuously across phases (1-9 for the whole recipe, as in
+MC), so "stap 7" is unambiguous. Step text never contains ingredient weights - they would not
+scale; put quantities in the formula, split into separate lines when needed. Portion weights,
+temperatures, times, dimensions and percentages are fine, because they do not change when the
+batch is scaled.
+
+Two kinds of indented paragraph may follow a step:
+
+- `_Doel:_` - the target state or endpoint that tells you the step is done (texture, core
+  temperature, colour).
+- `_Waarom:_` - the rationale: the mechanism behind the step.
+
+## Variants
+
+A variant (another rice, a vegan version) is its own complete recipe file: its own formula and
+steps, nothing inherited, so it reads and scales on its own. The two files reference each other
+by ID:
+
+- the variant: `variant_of: jollof`
+- the original: `variants: [jollof-rahman-superbasmati]`
+
+`check` reports a reference that is missing on either side.
+
+## Frontmatter
+
+| Field | Required | Example | Notes |
+| --- | --- | --- | --- |
+| `kind` | yes | `dish` | `dish` or `component`; decides the target folder on promotion |
+| `status` | yes | `testing` | `concept`, `testing` or `locked` |
+| `version` | yes | `"1.1"` | quoted (YAML reads `1.10` as `1.1`); equals the newest log entry |
+| `domain` | yes | `frozen` | `frozen`, `pastry`, `bread`, `savory`, `preserves`, `confectionery`, `beverage`; selects skills and calculators |
+| `basis` | yes | `[Volle melk]` | see [Formula](#formula) |
+| `cuisine` | no | `[West-Afrikaans]` | free list |
+| `techniques` | no | `[sorbet]` | free list |
+| `equipment` | no | `[KitchenAid ijsmaker]` | device names, resolved like ingredient names |
+| `portions` | no | `12` or `[4, 6]` | intended number of servings, a number or a range; omit when `portion_g` is set, since the count follows from the batch |
+| `portion_g` | no | `22` | weight per portion; it does not scale, so steps may state it |
+| `yield_g` | no | `120` | components: expected finished mass; when absent, the input total is used to scale the component for a dish |
+| `variant_of`, `variants` | no | `jollof` | recipe IDs, see [Variants](#variants) |
+| `time`, `storage` | no | free text | as in MC's recipe header |
+| `targets` | no | `serving_temp_c: [-14, -12]` | design intent, compared with computed values later; each value a number or a `[min, max]` range |
+| `aliases` | no | `[Perziksorbet]` | other names, used when other recipes reference this one |
+| `source` | no | free text | provenance: book, chef, chat |
+| `created` | no | `2026-09-05` | |
+
+Not stored: anything derivable - main ingredients, totals, percentages, computed metrics.
+Measured values belong to a bench trial and go in the iteration log.
+
+## Names, files and IDs
+
+- File name = ID: lowercase ASCII with hyphens (`witte-perziksorbet.md`), unique across the
+  vault.
+- Ingredient names in tables are plain text that must match the name or an alias of an
+  ingredient file in `03_reference/ingredients/`, or the title or an alias of a component recipe.
+  `culinaria check` reports unknown names with suggestions; `culinaria fmt` rewrites aliases to
+  the canonical name. No link syntax is needed, so names work in every editor and survive moving
+  files.
+- Frontmatter fields that point at recipes (`variant_of`, `variants`) use IDs.
+
+## Numbers
+
+- Decimal point everywhere, in tables and prose (`1.5`, `-5.5 °C`); never a thousands separator
+  (`1750`, not `1.750` or `1,750`). The parser also accepts a decimal comma in table cells
+  (`1,5`), and `fmt` rewrites it to a point.
+- Generated weights have 1 decimal. Generated percentages have 1 decimal from 1% up, 2 decimals
+  from 0.1% to 1%, and 3 below 0.1%. Hand-written weights keep the precision they were written
+  with.
+
+## Iteration log
+
+```markdown
+### v1.1 - 2026-10-22
+
+- Wijziging: stabilisator 2.0 → 1.6 g
+- Waarom: te elastisch bij -12 °C
+- Proef: overrun 22%, kern -5.2 °C bij uitname
+```
+
+Newest first. A new version bumps `version` in the frontmatter; git holds the full diff.
+
+## Open questions
+
+- Plan by percentage: allow a Schaling % with an empty weight, and let `fmt` fill in the grams?
+- Ice cream with inclusions: mix metrics (solids, fat, PAC) must exclude swirls and pieces. Mark
+  the groups that form the mix, e.g. `mix: [IJsbasis]`?
