@@ -30,9 +30,9 @@ workbench. The vault is the product; the tooling serves it.
 
 | Component | Status |
 | --- | --- |
-| Vault | Skeleton (Phase 0) |
-| Core library `codex_culinaria` | Vault layout check now; schema/parser/validator in Phase 1, calculators in Phase 2 |
-| CLI `culinaria` | `check` command now |
+| Vault | Populated with Phase 1 recipes, ingredient families, equipment and knowledge notes |
+| Core library `codex_culinaria` | Schema, parser, formatter and cross-reference validator (Phase 1); calculators in Phase 2 |
+| CLI `culinaria` | `check` and `fmt` commands |
 | Agent runtime | Phase 3 |
 | Web workbench | Phase 4 |
 

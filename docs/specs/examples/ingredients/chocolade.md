@@ -52,7 +52,7 @@ aliases:
   - Guanaja 70%
 brand: Valrhona
 source_type: datasheet
-source: Valrhona FT 4653 (samenstelling: 63.18% cacaobonen, 28.7% suiker, 7.7% cacaoboter, 0.4% zonnebloemlecithine, 0.02% vanille-extract; voedingswaarde per 100 g: 42 g vet, 34 g koolhydraten waarvan 30 g suikers, 13 g vezels, 8.6 g eiwit, 1.22 g water)
+source: "Valrhona FT 4653 (samenstelling: 63.18% cacaobonen, 28.7% suiker, 7.7% cacaoboter, 0.4% zonnebloemlecithine, 0.02% vanille-extract; voedingswaarde per 100 g: 42 g vet, 34 g koolhydraten waarvan 30 g suikers, 13 g vezels, 8.6 g eiwit, 1.22 g water)"
 ```
 
 Krachtige, geroosterde en licht bittere pure couverture in fèves.
@@ -98,7 +98,7 @@ aliases:
   - Ivoire 35%
 brand: Valrhona
 source_type: datasheet
-source: Valrhona FT 4660 (samenstelling: 42.78% suiker, 35.1% cacaoboter, 21.6% volle melkpoeder, 0.5% zonnebloemlecithine, 0.02% vanille-extract; voedingswaarde per 100 g: 41 g vet, 51 g koolhydraten waarvan 51 g suikers, 5.7 g eiwit, 0.2 g zout, vocht < 1.5%)
+source: "Valrhona FT 4660 (samenstelling: 42.78% suiker, 35.1% cacaoboter, 21.6% volle melkpoeder, 0.5% zonnebloemlecithine, 0.02% vanille-extract; voedingswaarde per 100 g: 41 g vet, 51 g koolhydraten waarvan 51 g suikers, 5.7 g eiwit, 0.2 g zout, vocht < 1.5%)"
 ```
 
 Licht gezoete professionele witte couverture (35.1% cacaoboter, 41.0% totaal vet) met tonen van

@@ -23,6 +23,7 @@ Run from the repository root:
 - `uv run mypy` - type-check (strict)
 - `uv run pytest` - run tests
 - `uv run culinaria check` - validate the vault
+- `uv run culinaria fmt` - normalize recipe formulas, phase tables, ingredient overview tables and aliases (`--check` to verify without writing)
 
 A change is done only when format, lint, type-check, tests and `culinaria check` all pass.
 CI runs the same commands (with `ruff format --check`).

@@ -15,9 +15,9 @@ vocht) voor koken en gesloten stoomgelatinisatie.
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | :--- |
 | **Basmatirijst** | 88.0 | 77.7 | 7.8 | 0.8 | 22.0* | 1.15* | 15* | datasheet + unverified* |
 | ↳ Rahman Superbasmati | 88.0 | 77.7 | 7.8 | 0.8 | 22.0* | 1.10* | 14-16* | unverified* |
-| ↳ Tilda Pure Basmati | 88.0 | 77.7 | 7.8 | 0.8 | 22.0* | 1.15* | 15* | datasheet |
+| ↳ Tilda Pure Basmati | 88.0 | 77.7 | 7.8 | 0.8 | 22.0* | 1.15* | 15* | datasheet + unverified* |
 | **Langkorrelige parboiled rijst** | 88.0 | 78.6 | 7.9 | 0.7 | 22.0* | 1.50* | 25* | datasheet + unverified* |
-| ↳ Golden Sella Basmati | 88.0 | 78.6 | 7.9 | 0.7 | 22.0* | 1.50* | 25* | datasheet |
+| ↳ Golden Sella Basmati | 88.0 | 78.6 | 7.9 | 0.7 | 22.0* | 1.50* | 25* | datasheet + unverified* |
 <!-- /culinaria:overview -->
 
 ## Basmatirijst

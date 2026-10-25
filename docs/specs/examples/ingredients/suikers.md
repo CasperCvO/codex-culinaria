@@ -72,7 +72,7 @@ pac: 172
 pod: 74
 de: 100
 source_type: datasheet
-source: Sosa technisch productblad Dextrose ref. 48684 / 41519 (sosa.cat/en/product/dextrose/: Solids 92%, PAC 172%, POD 74%)
+source: "Sosa technisch productblad Dextrose ref. 48684 / 41519 (sosa.cat/en/product/dextrose/: Solids 92%, PAC 172%, POD 74%)"
 ```
 
 Kristallijn D-glucose monohydraat (~8% kristalwater, M = 180.16 g/mol watervrij). Omdat het
@@ -105,7 +105,7 @@ pac: 56
 pod: 24
 de: 33
 source_type: datasheet
-source: Sosa technisch productblad Powdered Glucose DE33 ref. 50053 / 41434 (sosa.cat/en/product/powdered-glucose-de33/: Solids 94%, PAC 56%, POD 24%, pH 4.5-5.5)
+source: "Sosa technisch productblad Powdered Glucose DE33 ref. 50053 / 41434 (sosa.cat/en/product/powdered-glucose-de33/: Solids 94%, PAC 56%, POD 24%, pH 4.5-5.5)"
 ```
 
 Geatomiseerde (gesproeidroogde) glucosestroop verkregen door partiële hydrolyse van maïszetmeel

@@ -106,7 +106,7 @@ saturated_fat_pct: 0.3
 msnf_pct: 95.5
 salt_pct: 1.0
 source_type: datasheet
-source: Mattisson productblad MT2801 (mattisson.nl/biologische-magere-melkpoeder: 0.5 g vet, 52 g koolhydraten/suikers, 36 g eiwit, 1.0 g zout per 100 g)
+source: "Mattisson productblad MT2801 (mattisson.nl/biologische-magere-melkpoeder: 0.5 g vet, 52 g koolhydraten/suikers, 36 g eiwit, 1.0 g zout per 100 g)"
 ```
 
 Gesproeidroogde magere melk. Verhoogt in roomijs het gehalte aan vetvrije droge melkstof (MSNF)

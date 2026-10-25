@@ -131,7 +131,7 @@ by ID:
 | `basis` | yes | `[Volle melk]` | see [Formula](#formula) |
 | `cuisine` | no | `[West-Afrikaans]` | free list |
 | `techniques` | no | `[sorbet]` | free list |
-| `equipment` | no | `[KitchenAid ijsmaker]` | device names, resolved like ingredient names |
+| `equipment` | no | `[KitchenAid ijsmaker]` | device names, resolved against `00_context/equipment/` (see [`equipment-format.md`](equipment-format.md)) |
 | `portions` | no | `12` or `[4, 6]` | intended number of servings, a number or a range; omit when `portion_g` is set, since the count follows from the batch |
 | `portion_g` | no | `22` | weight per portion; it does not scale, so steps may state it |
 | `yield_g` | no | `120` | components: expected finished mass; when absent, the input total is used to scale the component for a dish |

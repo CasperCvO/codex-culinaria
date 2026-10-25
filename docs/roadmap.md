@@ -10,7 +10,7 @@ vault layout.
 
 Exit: format, lint, type-check, tests and `culinaria check` green locally and in CI.
 
-## Phase 1 - Data model & formats (current)
+## Phase 1 - Data model & formats (done)
 
 Goal: the recipe, ingredient and equipment file formats, plus a parser/serializer and
 validators.
@@ -30,8 +30,8 @@ order whose ingredient tables are generated from it, so they cannot disagree. Al
 
 Ingredient and equipment schemas: one file per ingredient family (with functional
 ingredients and brand/cultivar variants in a heading hierarchy, see
-`docs/specs/ingredient-format.md`) and one file per device; composition data with sources;
-aliases.
+`docs/specs/ingredient-format.md`) and one file per device (see
+`docs/specs/equipment-format.md`); composition data with sources; aliases.
 
 Deliverables:
 
@@ -42,7 +42,7 @@ Deliverables:
 
 Exit: examples migrated, validator green, round-trip tests pass.
 
-## Phase 2 - Calculators
+## Phase 2 - Calculators (current)
 
 Goal: deterministic culinary math over the vault data.
 

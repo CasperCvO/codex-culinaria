@@ -13,7 +13,7 @@ bloemsoorten met `role: flour` tellen mee wanneer een recept `basis: flour` gebr
 <!-- culinaria:overview (generated - edits here are overwritten) -->
 | Ingrediënt | Rol | Droge stof (%) | Koolhydraten (%) | Eiwit (%) | Vet (%) | Vezels (%) | Asgehalte (%) | Gluten | Bronstatus |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | :--- | :--- |
-| **Zeeuwse bloem** | flour | 86.0 | 71.0 | 9.0 | 1.0 | 3.0 | 0.45* | weak | datasheet + unverified* |
+| **Zeeuwse bloem** | flour | 86.0* | 71.0 | 9.0 | 1.0 | 3.0 | 0.45* | weak | datasheet + unverified* |
 | **T55 bloem** | flour | 86.0* | 72.0* | 11.0* | 1.2* | 3.0* | 0.55 | medium | datasheet + unverified* |
 | **Boekweitmeel** | flour | 87.0* | 72.0 | 9.0 | 2.8 | 5.6 | - | none | database + unverified* |
 | **Havervlokken** | grain | 89.0* | 60.7 | 12.8 | 7.3 | 7.3 | - | none | database + unverified* |
@@ -96,7 +96,7 @@ fiber_pct: 5.6
 salt_pct: 0.0
 gluten: none
 source_type: database
-source: NEVO-online 2023/8.0 (RIVM, via Brood.net: 353 kcal, 72 g koolhydraten, 5.6 g vezels, 9.0 g eiwit, 2.8 g vet per 100 g)
+source: "NEVO-online 2023/8.0 (RIVM, via Brood.net: 353 kcal, 72 g koolhydraten, 5.6 g vezels, 9.0 g eiwit, 2.8 g vet per 100 g)"
 unverified:
   - water_pct
   - solids_pct
@@ -125,7 +125,7 @@ fiber_pct: 7.3
 salt_pct: 0.02
 gluten: none
 source_type: database
-source: NEVO-online 2023/8.0 (RIVM, via Brood.net: 373 kcal, 60.7 g koolhydraten, 7.3 g vezels, 12.8 g eiwit, 7.3 g vet per 100 g)
+source: "NEVO-online 2023/8.0 (RIVM, via Brood.net: 373 kcal, 60.7 g koolhydraten, 7.3 g vezels, 12.8 g eiwit, 7.3 g vet per 100 g)"
 unverified:
   - water_pct
   - solids_pct

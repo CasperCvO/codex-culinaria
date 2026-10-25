@@ -127,7 +127,7 @@ salt_pct: 0.03
 brix: 67.0
 acidity_pct: 1.3
 source_type: datasheet
-source: Fabbri Amarena technisch specificatieblad f.9951138.0221066 (shopfabbriusa.com: 67 °Bx, 67% koolhydraten waarvan 61% suikers, 1.3% zuur als citroenzuur-monohydraat, 0.15% vezels, 0.03% zout)
+source: "Fabbri Amarena technisch specificatieblad f.9951138.0221066 (shopfabbriusa.com: 67 °Bx, 67% koolhydraten waarvan 61% suikers, 1.3% zuur als citroenzuur-monohydraat, 0.15% vezels, 0.03% zout)"
 ```
 
 Wilde zure kersen (40 g fruit per 100 g eindproduct) geconfijt in een zware suiker- en
