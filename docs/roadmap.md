@@ -76,7 +76,8 @@ Goal: web research tool, search index, allergen roll-up, costing.
 - Recipe layout details (table vs per-phase sections, generated part).
 - ID scheme and link syntax for cross-references.
 - Folder vs `status` field as the single source of workflow state.
-- Pantry representation: flag on ingredient files vs a separate list.
+- Pantry file format (kept separate from `03_reference/ingredients/` so stock changes do
+  not dirty reference data; see ADR 0006).
 - Trial photos/attachments (Git LFS?).
 - LLM adapter: thin wrapper over an official SDK vs LiteLLM - LiteLLM's PyPI package was
   compromised twice in 2026 (March and October); also the data-privacy tier
